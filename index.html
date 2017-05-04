@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Pass HTML5 validation: https://validator.w3.org/
+-->
+  <meta charset="UTF-8">
+  <title>PSP3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+</head>
+
+    <body data-ng-app="psp" data-ng-controller="MainCtrl as mc">
+
+    <input type="button" value="change header css" ng-click="myHeaderCssVar='css-class'">
+      <input type="button" value="clear" ng-click="myHeaderCssVar=''">
+
+      <h1 ng-class="myHeaderCssVar">{{mc.title}}</h1>
+
+        Show Salesperson: <input type="checkbox"  ng-model= "salesPart">
+        Show Product:<input type="checkbox" ng-model="proPart">
+
+
+        <div data-ng-controller="SalesController as sales" data-ng-show="salesPart">
+
+          <form class="css-form" name="salespersonForm" novalidate>
+          <fieldset >
+            <legend>Input Salesperson Information</legend>
+
+            <label for="eId">ID: </label>
+            <input type="text" id="eId" name="eId" data-ng-model="sales.id"  required=""></input>
+            <span ng-show="salespersonForm.eId.$touched && salespersonForm.eId.$invalid">The ID is required.</span>
+            <br>
+
+            <label for="firstName">FirstName: </label>
+            <input type="text" id="firstName" name="firstName" data-ng-model="sales.firstName" required></input>
+            <span ng-show="salespersonForm.firstName.$touched && salespersonForm.firstName.$invalid">The FirstName is required.</span>
+            <br>
+
+            <label for="lastName">LastName: </label>
+            <input type="text" id="lastName" name="lastName" data-ng-model="sales.lastName"  required></input>
+            <span ng-show="salespersonForm.lastName.$touched && salespersonForm.lastName.$invalid">The LastName is required.</span>
+            <br>
+
+            <label for="salary">Salary: </label>
+            <input type="number" id="salary" name="salary" data-ng-model="sales.salary" required></input>
+            <span ng-show="salespersonForm.salary.$touched && salespersonForm.salary.$invalid">The Salary is required.</span>
+            <br>
+
+            <label for="commencedYear">Commenced year: </label>
+            <input type="number" id="commencedYear" name="commencedYear" data-ng-model="sales.yearCommenced"  required></input>
+            <span ng-show="salespersonForm.commencedYear.$touched && salespersonForm.commencedYear.$invalid">The CommencedYear is required.</span>
+            <br>
+
+            <button ng-disabled="salespersonForm.eId.$invalid || salespersonForm.firstName.$invalid ||
+            salespersonForm.lastName.$invalid || salespersonForm.salary.$invalid || salespersonForm.commencedYear.$invalid" id='btnAddSalesperson' data-ng-click="sales.addSalesPerson()">Add</button>
+
+            <button  id='reset' reset-form>reset</button>
+
+          </fieldset>
+          </form>
+
+        <!-- // read file -->
+
+        <input type="file" on-read-file="mc.showContent(fileContent)" />
+
+        <div class="buttongroup">
+         <a href="#salesperson" type="button" data-ng-click="mc.does()">display and show salesPerson by Table</a>
+
+        <a href="#salespersonorder" type="button" id='btnDisplaySalesperson' data-ng-click="sales.getSalesPersonsToOrder(); sales.isHidden = false">Display Salesperson to Oreder</a>
+        <!-- file contents  display-->
+      <!--     <div data-ng-if="mc.fileContent " class="content">
+            <p>The contents as a single string:</p>
+            {{mc.fileContent}}
+          </div> -->
+
+        <a href="#average" type="button" data-ng-click="mc.calculateSalary()">Calculate absolute average deviation</a></a>
+
+        <a href="#sample" type="button" data-ng-click="mc.calculateSampleCovariance()">sample covariance</a>
+
+        </div>
+
+        <ng-view></ng-view>
+
+        </div>
+
+
+    <!-- product content -->
+     <div data-ng-controller="ProductController as product" data-ng-show="proPart">
+
+     <form class="css-form" name="productForm" novalidate>
+     <fieldset>
+         <legend>Input Product Information</legend>
+
+         <label  for="pId">ID: </label>
+         <input type="text" id="pId" name="pId" data-ng-model="product.pId" required></input>
+         <span ng-show="productForm.pId.$touched && productForm.pId.$invalid">The ID is required.</span>
+         <br>
+
+         <label for="name">Name: </label>
+         <input type="text" id="name" name="name" data-ng-model="product.pName" required></input>
+         <span ng-show="productForm.name.$touched && productForm.name.$invalid">The Name is required.</span>
+         <br>
+
+         <label for="price">Price: </label>
+         <input type="number" id="price" name="price" data-ng-model="product.price" required></input>
+         <span ng-show="productForm.price.$touched && productForm.price.$invalid">The Price is required.</span>
+         <br>
+
+         <label for="quantityOnHand">QuantityOnHand: </label>
+         <input type="number" id="quantityOnHand" name="quantityOnHand" data-ng-model="product.qHand" required></input>
+         <span ng-show="productForm.quantityOnHand.$touched && productForm.quantityOnHand.$invalid">The QuantityOnHand is required.</span>
+         <br>
+
+         <label for="minimumQuantity">MinimumQuantity: </label>
+         <input type="number" id="minimumQuantity" name="minimumQuantity" data-ng-model="product.minQ" required></input>
+         <span ng-show="productForm.minimumQuantity.$touched && productForm.minimumQuantity.$invalid">The MinimumQuantity is required.</span>
+         <br>
+
+         <button ng-disabled="productForm.pId.$invalid || productForm.name.$invalid ||
+            productForm.price.$invalid || productForm.quantityOnHand.$invalid || productForm.minimumQuantity.$invalid" id="btnAddProduct" data-ng-click="product.addProduct()">Add</button>
+     </fieldset>
+     </form>
+
+     <alternative-dynamic-table></alternative-dynamic-table>
+
+
+         <div>
+            <input type="file" on-read-file="mc.showContent(fileContent)" />
+            <button type="button" data-ng-click="mc.does2()">display and show Product by Table</button>
+         </div>
+
+         <button id='btnDisplayProduct' data-ng-click="product.getProductsToOrder(); product.isHidden = false">Display Product to Order</button>
+
+         <div id="show" class="content" data-ng-hide="product.isHidden" data-ng-if="product.getProductsToOrder().length">
+           <table class="table" >
+             <tr>
+               <th>ID</th>
+               <th>More Needed Product</th>
+             </tr>
+             <tr data-ng-repeat="product in product.getProductsToOrder()| orderBy : 'id'">
+               <td class="td1">{{product.id}}</td>
+               <td class="td2">{{product.name}}</td>
+             </tr>
+           </table>
+
+      </div>
+    </div>
+
+        <script src="js/company.js"></script>
+        <script src="js/product.js"></script>
+        <script src="js/Salesperson.js"></script>
+
+        <script src="js/productController.js"></script>
+        <script src="js/salesController.js"></script>
+
+        <script src="js/directive_resetform.js"></script>
+        <script src="js/alternative-dynamictable-directive.js"></script>
+        <script src="js/directive_filereader.js"></script>
+        <script src="js/mainCtrl.js"></script>
+
+        <script src="js/main.js"></script>
+
+      </body>
+
+      </html>

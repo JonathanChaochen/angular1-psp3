@@ -1,0 +1,15 @@
+<!-- Salesperson ID and Name Table-->
+  <div data-ng-if="sales.getSalesPersonsToOrder().length" data-ng-hide="sales.isHidden" class="content">
+    <p>ID and Name Table</p>
+    <table>
+      <tr>
+        <td>ID</td>
+        <td>Name of Sales Person</td>
+      </tr>
+      <tr data-ng-repeat="one in sales.getSalesPersonsToOrder() | orderBy: 'lastName' ">
+        <td>{{ one.id }}</td>
+        <td>{{ one.lastName }}, {{ one.firstName }}</td>
+      </tr>
+    </table>
+  </div>
+

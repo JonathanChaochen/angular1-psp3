@@ -1,0 +1,5 @@
+ID,Name,Price,QuantityOnHand,MinimumQuantity
+NU,Nut,11.95,100,200
+SC,Screw,15.75,150,100
+WA,Washer,12.5,80,50
+BO,Bolt,20,50,100

@@ -1,0 +1,98 @@
+/*------------default------------*/
+body { padding: 5% }
+
+.content {
+  background: #efefef;
+  padding: 20px;
+  margin-top: 25px;
+  line-height: 1.8;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+   border: 1px solid black;
+   padding: 2px;
+}
+
+
+/*------------Form-validation-------------*/
+.css-form input.ng-invalid.ng-touched {
+  background-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-touched {
+  background-color: #78FA89;
+}
+
+.css-form span {
+  color: red;
+}
+
+/*-----------ng-class(for fun)---------*/
+.css-class-add, .css-class-remove {
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.css-class,
+.css-class-add.css-class-add-active {
+  color: #78FA89;
+  font-size:3em;
+}
+
+.css-class-remove.css-class-remove-active {
+  font-size:1.0em;
+  color: black;
+}
+
+
+/*------------layout------------*/
+
+fieldset {
+  width: 40em;
+  margin: 0.5em 0;
+  padding: 1em;
+  border-radius: 0.25em;
+
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 8em;
+    text-align: right;
+}
+
+input[type=text], input[type=number]{
+  height: 20px;
+  width:  19em;
+  margin: 0.2em 0.5em ;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  border: 1px solid #ccc;
+}
+
+a[type="button"] {
+  display: block;
+}
+
+.buttongroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  font-weight: bold;
+   background-color: #4CAF50;
+   /*color: white;*/
+   padding: 1em 3em;
+   margin: 0.5em 0;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+
+}

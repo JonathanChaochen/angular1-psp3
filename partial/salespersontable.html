@@ -1,0 +1,20 @@
+
+<!-- <button id='btnDisplaySalesperson'>Display Salesperson</button> -->
+<div id="showSalesPerson" class="content" data-ng-if="sales.company.allMySalesPersons.length">
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Salary</th>
+      <th>Commenced year</th>
+    </tr>
+    <tr data-ng-repeat="one in sales.company.allMySalesPersons | orderBy : 'id'">
+      <td class="td1">{{one.id}}</td>
+      <td class="td1">{{one.lastName}}</td>
+      <td class="td3">{{one.firstName}}</td>
+      <td class="td4">{{one.salary}}</td>
+      <td class="td5">{{one.yearCommenced}}</td>
+    </tr>
+  </table>
+</div>
