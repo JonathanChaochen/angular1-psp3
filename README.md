@@ -1,18 +1,13 @@
 # Angular1-psp3
-##Assignment in software engineering course
 
-# Heading
-
-## Sub-heading
-
-
+## Assignment in software engineering course
 
 Tasks:
 
 1. Updating PSP2 with more features
 2. Calculate and display the sample covariance of Salary and YearCommenced data of all sales
 people
-link [link](http://www.r-tutor.com/elementary-statistics/numerical-measures/covariance)
+ [link](http://www.r-tutor.com/elementary-statistics/numerical-measures/covariance)
 3. Load product data from the product data file provided
 4. If necessary, modify the addProduct method in Company class that can be used to create a
 new Product. You may need to add some code in the Product class as well. (You can and should
@@ -27,4 +22,4 @@ called.
 based implementation
 
 
-result [link](http://jonathanchaochen.github.io/angular1-psp3).
+ [result](http://jonathanchaochen.github.io/angular1-psp3).
